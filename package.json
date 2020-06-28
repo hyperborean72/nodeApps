@@ -1,5 +1,5 @@
 {
-  "name": "node-js-playlist",
+  "name": "nodejs-tasklist",
   "version": "1.0.0",
   "description": "a little node js to-do app",
   "main": "app.js",
