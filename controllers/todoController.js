@@ -3,13 +3,12 @@ const urlencodedParser = bodyParser.urlencoded({urlencoded: false});
 
 
 const mongoose = require('mongoose');
-
 mongoose.connect('mongodb+srv://musclex09_boy:0-experT@cluster0-1vure.azure.mongodb.net/NetNinjaTo-DoApp?retryWrites=true&w=majority');
 
 // structure of a single element in Mongo DB collection
 var todoSchema = new mongoose.Schema({item: String});
 
-//'Todo' - model name which is stored as a collection on Mongo
+//'Todo' model stored as a 'todos' collection @ Mongo
 var Todo = mongoose.model('Todo', todoSchema);
 
 // saving a single element into collection
@@ -18,14 +17,10 @@ var Todo = mongoose.model('Todo', todoSchema);
     console.log('get flowers saved');
 }); */
 
-
-var data = [{item: 'get milk'}, {item: 'walk dog'}, {item: 'study French'}];
-
-
-// we want to be able to export the content of this js as a module into another file
+// export this function by the file path: require('./controllers/todoController')
 module.exports = function(appLoc){
 
-    /* kinda index
+    /* index page
         app.get('/',function (req, res) {
             res.render('pages/home')
         });
@@ -45,7 +40,7 @@ module.exports = function(appLoc){
 
     
     appLoc.post('/todo', urlencodedParser, function(req, res){
-        // in case we post form data as todos list item without saving to MongoDB
+        // in case we post form data to todos list item without saving to MongoDB
         /* data.push(req.body);
         res.json(data); */
         
@@ -54,10 +49,6 @@ module.exports = function(appLoc){
             if(err) throw err;
             res.json(data);
         });
-        // saves empty element into collection - DOES NOT function as expected
-        /* var newTodo = Todo(res.json(req.body)).save(function(err){
-            if(err) throw err;
-        }); */
     });
 
     
@@ -70,10 +61,9 @@ module.exports = function(appLoc){
         })
     });  
     
+    // FIX IT
     // if you are doing this now (4/4/2020) there is no need to install body-parser; 
     // instead 1. in your app.js app.use(express.json() AND app.use(express.urlencoded({extended: true}) 
     // 2. in you controller, no need to install body-parser, no need to write variable for urlencodedParser,  
     // and you don't have to pass urlencodedParser as middleware
-
-
 }

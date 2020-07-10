@@ -1,17 +1,18 @@
 <html>
     <head>
         <title>Todo List</title>
-        <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+        <link href="styles.css" rel="stylesheet" type="text/css" />
 
         <script src="http://code.jquery.com/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" src="assets/todo-list.js"></script>
+        <script type="text/javascript" src="todo-list.js"></script>
 
     </head>
     <body>
+        <h1>header</h1>
         <div id="todo-table">
             <form>
-                <input type="text" name="item" placeholder="Add new item" required />
-                <button type="submit">Add Item</button>
+                <input type="text" name="item" placeholder="Add new todo" required />
+                <button type="submit">Add ToDo</button>
             </form>
             <ul>
                 <% todos.forEach(todo => { %>
